@@ -100,8 +100,9 @@ function Validator(formSelector) {
 //*---Scroll handler---
 var scrollToTopBtn = document.getElementById("toTopMenu")
 window.onscroll = function () {
-    let opsetTopBody = document.body.scrollTop || document.documentElement.scrollTop
-    if (opsetTopBody > 300) {
+    console.log(window.scrollY);
+    let opsetTopBody = window.scrollY
+    if (opsetTopBody >= 400) {
         scrollToTopBtn.style.display = "block"
     } else {
         scrollToTopBtn.style.display = "none"
@@ -132,12 +133,12 @@ window.onscroll = function () {
     */
 }
 
-//*---function scroll to top---
+//*function scroll to top
 function scrollToTop() {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
 }
-//*---end scroll to top---
+//*end scroll to top
 
 //*Flat menu */
 const flatMenu = document.querySelector('.flatMenu')

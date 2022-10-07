@@ -60,6 +60,10 @@ header .fixedTop {
     width: 100%;
 }
 
+header #dropdownBtn {
+    display: none;
+}
+
 header .nav {
     background-color: #f3f3f3;
     width: 100%;
@@ -118,9 +122,6 @@ header .nav .nav__links .stick {
     margin: 10px 0;
 }
 
-header #dropdownBtn {
-    display: none;
-}
 
 
 /*** -----NAV END----- */
@@ -560,6 +561,10 @@ header #dropdownBtn {
         max-width: 1024px;
     }
 
+    .flatMenu div:not(div:last-child) {
+        display: none;
+    }
+
     /** --- Home--- **/
     .home__container {
         flex-direction: column-reverse;
@@ -598,6 +603,10 @@ header #dropdownBtn {
     }
 
     .contact__container .contact {
+        max-width: 768px;
+    }
+
+    .contact__container .form__template {
         max-width: 768px;
     }
 
@@ -650,7 +659,7 @@ header #dropdownBtn {
         background-color: transparent;
         transform: rotate(90deg);
         transition: transform ease 0.4s;
-
+        outline: none;
     }
 
     header #dropdownBtn img {
@@ -691,13 +700,10 @@ header #dropdownBtn {
         transition: width ease 0.4s;
     }
 
+    header .nav .nav__links.mobileNav .nav-item.active a::after,
     header .nav .nav__links.mobileNav .nav-item:hover a::after {
         width: 10%;
         transition: width ease 0.4s;
-    }
-
-    header .nav .nav__links.mobileNav .nav-item.active a::after {
-        width: 10%;
     }
 
     /** --- Home--- **/
@@ -711,10 +717,6 @@ header #dropdownBtn {
     .home__container .home--content {
         padding: 10px 0px;
     }
-
-    /* .home__container .home--content p {
-        padding: 5px 5px;
-    } */
 
     .home__container .home--content h1 {
         font-size: 40px;
@@ -800,5 +802,9 @@ header #dropdownBtn {
     .footer>div p {
         margin: 5px 0;
         text-align: center;
+    }
+
+    .flatMenu div:not(div:last-child) {
+        display: none;
     }
 }
