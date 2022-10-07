@@ -100,37 +100,8 @@ function Validator(formSelector) {
 //*---Scroll handler---
 var scrollToTopBtn = document.getElementById("toTopMenu")
 window.onscroll = function () {
-    console.log(window.scrollY);
     let opsetTopBody = window.scrollY
-    if (opsetTopBody >= 400) {
-        scrollToTopBtn.style.display = "block"
-    } else {
-        scrollToTopBtn.style.display = "none"
-    }
-
-    /* /? active nav when scroll
-    let parrentElements = document.querySelectorAll('.pages')
-    let elementsChildrens = parrentElements[0].children
-    let current = ''
-    const navLiElements = document.querySelectorAll('.nav-item')
-    if (elementsChildrens) {
-        for (let i = 0; i < elementsChildrens.length; i++) {
-            const elementOpsetTop = elementsChildrens[i].offsetTop
-            if (opsetTopBody + 10 >= elementOpsetTop) {
-                current = elementsChildrens[i].id
-                // console.log(elementOpsetTop, opsetTopBody)
-            }
-        }
-
-    }
-    navLiElements.forEach((li) => {
-        // console.log(li.dataset.id)
-        li.classList.remove("active")
-        if (li.dataset.id === current) {
-            li.classList.add("active")
-        }
-    })
-    */
+    opsetTopBody >= 400 ? scrollToTopBtn.style.display = "block" : scrollToTopBtn.style.display = "none"
 }
 
 //*function scroll to top

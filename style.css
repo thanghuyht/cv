@@ -466,7 +466,7 @@ header .nav .nav__links .stick {
 .flatMenu .floatButtonToTop {
     opacity: 0.4;
     position: fixed;
-    right: 20px;
+    right: 40px;
     bottom: 40px;
     cursor: pointer;
 }
@@ -482,18 +482,19 @@ header .nav .nav__links .stick {
 }
 
 .flatMenu .floatButtonToTop span {
-    display: block;
+    display: inline-block;
     position: absolute;
     top: 0;
     right: 40px;
     font-size: 0px;
     font-style: italic;
     color: var(--text-color);
+    opacity: 0;
 }
 
 .flatMenu div:hover span {
     opacity: 1;
-    font-size: 10px;
+    font-size: 14px;
     transition: all ease 0.3s;
     transition-duration: 0.3s;
 }
@@ -507,7 +508,7 @@ header .nav .nav__links .stick {
     line-height: 29px;
     text-align: center;
     position: fixed;
-    right: 20px;
+    right: 40px;
     bottom: 40px;
     opacity: 0;
 }
@@ -522,6 +523,7 @@ header .nav .nav__links .stick {
     bottom: 150px;
     transition-duration: 0.5s;
     animation: showFlatMenu forwards 0.3s;
+    animation-delay: 0.6s;
 }
 
 .flatMenu div:nth-child(2).show {
@@ -529,6 +531,7 @@ header .nav .nav__links .stick {
     bottom: 115px;
     transition-duration: 0.5s;
     animation: showFlatMenu forwards 0.3s;
+    animation-delay: 0.3s;
 }
 
 .flatMenu div:nth-child(3).show {
@@ -536,6 +539,7 @@ header .nav .nav__links .stick {
     bottom: 80px;
     transition-duration: 0.5s;
     animation: showFlatMenu forwards 0.3s;
+    animation-delay: 0.1s;
 }
 
 
@@ -559,10 +563,6 @@ header .nav .nav__links .stick {
     .pages {
         min-width: 768px;
         max-width: 1024px;
-    }
-
-    .flatMenu div:not(div:last-child) {
-        display: none;
     }
 
     /** --- Home--- **/
@@ -594,7 +594,7 @@ header .nav .nav__links .stick {
     /** --- Projects --- **/
     .projects__container .project .project-wall .project-wallpaper img {
         width: 340px;
-        margin-right: 10px;
+        padding-right: 10px;
     }
 
     /** --- Contact --- **/
@@ -602,16 +602,13 @@ header .nav .nav__links .stick {
         grid-template-columns: auto;
     }
 
-    .contact__container .contact {
-        max-width: 768px;
-    }
-
-    .contact__container .form__template {
-        max-width: 768px;
+    .contact__container .form__template .form-group-container .form-group {
+        width: 100%;
     }
 
     .contact__container .form__template .form-group-container .form-group input {
-        width: 300px;
+        width: calc(100% - 32px);
+        /* - (padding + borrder) + padding*/
     }
 
     .contact__container .form__template .form-group-container .form-group .contact__container .form__template .messeger .text-area {
@@ -620,6 +617,12 @@ header .nav .nav__links .stick {
 
     .contact__container .form__template .text-area {
         grid-template-columns: 70% auto;
+        padding: 0 10px;
+    }
+
+    .contact__container .form__template .text-area textarea {
+        width: calc(100% - 12px);
+        /* - (padding + borrder) */
     }
 
     .contact__container .form__template .special-button {
@@ -628,9 +631,10 @@ header .nav .nav__links .stick {
         font-size: 20px;
     }
 
-    .flatMenu div {
-        right: 50px;
+    .flatMenu div:not(div:last-child) {
+        display: none;
     }
+
 }
 
 /*? Mobile */
@@ -673,11 +677,11 @@ header .nav .nav__links .stick {
 
     header .nav .nav__links.mobileNav {
         display: block;
-        animation: navlink 0.4s;
+        animation: navlinkAnimation 0.4s;
         animation-fill-mode: forwards;
     }
 
-    @keyframes navlink {
+    @keyframes navlinkAnimation {
         from {
             width: 0%;
             height: 0%;
@@ -783,7 +787,7 @@ header .nav .nav__links .stick {
     }
 
     .contact__container .form__template .text-area textarea {
-        width: calc(100% - 17px);
+        width: calc(100% - 12px);
         height: 100px;
     }
 
@@ -802,6 +806,12 @@ header .nav .nav__links .stick {
     .footer>div p {
         margin: 5px 0;
         text-align: center;
+    }
+
+    /** --- Flatmenu--- */
+    .flatMenu .floatButtonToTop {
+        right: 30px;
+        bottom: 40px;
     }
 
     .flatMenu div:not(div:last-child) {
