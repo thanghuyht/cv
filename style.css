@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
-/** Đặt lại các giá trị mặc định */
+/* Set Css */
 * {
     margin: 0;
     padding: 0;
@@ -27,21 +27,13 @@ a {
     color: var(--text-color);
 }
 
-/* p {
-    text-align: justify;
-} */
-
 .container--xxl {
     position: relative;
-    display: block;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.pages {
-    margin: 0 auto;
-}
-
+/* Set Css end*/
 
 
 /** -----NAV BEGIN----- */
@@ -112,12 +104,9 @@ header .nav .nav__links .stick {
     margin: 10px 0;
 }
 
-
-
 /*** -----NAV END----- */
 
 /*** -----HOME BEGIN----- */
-
 
 .home__container {
     display: flex;
@@ -210,7 +199,6 @@ header .nav .nav__links .stick {
     transition-duration: 0.3s;
 }
 
-
 /**---- END HOME --------- */
 
 /**---- BEGIN RESUME ----*/
@@ -266,9 +254,9 @@ header .nav .nav__links .stick {
     font-size: 16px;
 }
 
-/**---- END RESUME ----*/
+/** ---- END RESUME ---- */
 
-/** BEGIN PROJECT */
+/** ---- BEGIN PROJECT ---- */
 .projects__container {
     max-width: 1200px;
     margin: 0 auto 30px auto;
@@ -301,9 +289,9 @@ header .nav .nav__links .stick {
     width: 400px;
 }
 
-/** END PROJECT  */
+/** ---- END PROJECT ---- */
 
-/** BEGIN FORM  */
+/** ---- BEGIN FORM ---- */
 
 .contact__container {
     display: grid;
@@ -549,7 +537,7 @@ header .nav .nav__links .stick {
 
 /*? Tablet */
 @media only screen and (min-width: 740px) and (max-width: 1024px) {
-    .pages {
+    body {
         min-width: 768px;
         max-width: 1024px;
     }
