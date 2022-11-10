@@ -6,18 +6,46 @@ dropdownNavBtn.onclick = function () {
     this.classList.toggle('active')
     navLink.classList.toggle('mobileNav')
 }
-const dropdownLink = document.getElementsByClassName('nav-item')
-for (let i = 0; i < dropdownLink.length; i++) {
-    const element = dropdownLink[i]
-    element.addEventListener("click", function () {
-        var current = document.querySelectorAll('.nav__links .active')
-        if (current.length > 0) {
-            current[0].className = current[0].className.replace(" active", "")
-        }
-        this.className += " active"
-    })
+//*---Scroll handler---
+const sections = document.querySelectorAll('section')
+const navItems = document.querySelectorAll('.nav-items')
+var scrollToTopBtn = document.getElementById("toTopMenu")
+window.onscroll = function () {
+    let opsetTopBody = window.scrollY
+    opsetTopBody >= 400 ? scrollToTopBtn.style.display = "block" : scrollToTopBtn.style.display = "none"
 }
 //*---end nav---
+
+//slider image
+let slides = document.querySelectorAll('.image-slider')
+let sliderMenus = document.querySelectorAll('.slider-menu')
+function setShow(indexShow) {
+    const clearSlider = () => {
+        for (let index = 0; index < slides.length; index++) {
+            slides[index].style.display = 'none'
+        }
+    }
+    const clearMenus = () => {
+        for (let index = 0; index < sliderMenus.length; index++) {
+            sliderMenus[index].classList.remove('active')
+        }
+    }
+    clearSlider()
+    clearMenus()
+    if (!!indexShow || indexShow === 0) {
+        slides[indexShow].style.display = 'flex'
+        sliderMenus[indexShow].classList.add('active')
+    } else {
+        slides[1].style.display = 'flex'
+        sliderMenus[1].classList.add('active')
+    }
+}
+
+setShow()
+function showImage(n) {
+    setShow(n)
+}
+//END slider image
 
 //*---Form Validator---
 function Validator(formSelector) {
@@ -96,14 +124,16 @@ function Validator(formSelector) {
 }
 //*----End form validators----
 
-
-//*---Scroll handler---
-var scrollToTopBtn = document.getElementById("toTopMenu")
-window.onscroll = function () {
-    let opsetTopBody = window.scrollY
-    opsetTopBody >= 400 ? scrollToTopBtn.style.display = "block" : scrollToTopBtn.style.display = "none"
+//*Flat menu */
+const flatMenu = document.getElementById('toTopMenu')
+let delay
+const showFlatMenu = () => {
+    flatMenu.classList.add('show')
+    clearTimeout(delay)
 }
-
+function hideFlatMenu() {
+    delay = setTimeout(() => { flatMenu.classList.remove('show') }, 1000)
+}
 //*function scroll to top
 function scrollToTop() {
     document.body.scrollTop = 0
@@ -111,22 +141,4 @@ function scrollToTop() {
 }
 //*end scroll to top
 
-//*Flat menu */
-const flatMenu = document.querySelector('.flatMenu')
-function showFlatMenu() {
-    if (flatMenu) {
-        for (let i = 0; i < flatMenu.children.length; i++) {
-            flatMenu.children[i].classList.add('show')
-        }
-    }
-}
-function hideFlatmenu() {
-    if (flatMenu) {
-        for (let i = 0; i < flatMenu.children.length; i++) {
-            setTimeout(() => {
-                flatMenu.children[i].classList.remove('show')
-            }, 3000);
-        }
-    }
-}
 //*end Flat menu */

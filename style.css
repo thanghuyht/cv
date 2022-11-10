@@ -28,30 +28,36 @@ a {
 }
 
 .container--xxl {
-    position: relative;
     max-width: 1200px;
     margin: 0 auto;
 }
+
 
 /* Set Css end*/
 
 
 /** -----NAV BEGIN----- */
+
 header .fixedTop {
     position: fixed;
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+header .nav {
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 1111;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f3f3f3;
 }
 
 header #dropdownBtn {
     display: none;
-}
-
-header .nav {
-    background-color: #f3f3f3;
-    width: 100%;
-    display: inline-block;
-    padding: 20px 0;
 }
 
 header .nav ul {
@@ -80,19 +86,19 @@ header .nav .nav__links {
     padding-right: 10px;
 }
 
-header .nav .nav__links .nav-item {
+header .nav .nav__links .nav-items {
     padding: 0 10px;
     text-align: center;
 }
 
-header .nav .nav__links .nav-item a {
+header .nav .nav__links .nav-items a {
     font-size: 18px;
     line-height: 46px;
     text-align: center;
 }
 
-header .nav .nav__links .nav-item.active a,
-header .nav .nav__links .nav-item a:hover {
+header .nav .nav__links .nav-items.active a,
+header .nav .nav__links .nav-items a:hover {
     color: var(--text-hover-color);
     transition-duration: 0.2s;
 }
@@ -107,31 +113,110 @@ header .nav .nav__links .stick {
 /*** -----NAV END----- */
 
 /*** -----HOME BEGIN----- */
+#home,
+#resume,
+#projects,
+#contact {
+    padding-top: 64px;
+}
 
 .home__container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 80px 0px;
+    padding: 40px 0px;
     max-width: 980px;
     margin: 0 auto;
+    height: 100%;
 }
 
 .home__container .home--image {
-    display: flex;
+    width: 50%;
+    height: 560px;
     max-width: 480px;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+
+.home__container .home--image .images {
+    height: 100%;
+}
+
+
+
+.home__container .home--image ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px 10px;
+    list-style-type: none;
+    position: absolute;
+    bottom: 0;
+
+}
+
+.home__container .home--image ul .slider-menu {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid var(--text-hover-color);
+    border-radius: 50%;
+    transition-duration: 0.3s;
+    transition: background-color 0.6s ease;
+}
+
+.home__container .home--image ul .slider-menu.active,
+.home__container .home--image ul .slider-menu:hover {
+    border-color: #000000;
+    transition-duration: 0.3s;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.home__container .home--image .image-slider {
+    width: 460px;
+    height: 460px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #d4d0d0;
+}
+
+.home__container .home--image .image-slider span {
+    font-size: 80px;
+    font-weight: 800;
 }
 
 .home__container .home--image img {
-    width: 480px;
-    height: 480px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     object-fit: cover;
+
 }
 
-.home__container .home--image img:hover {
+.home__container .home--image .image-slider:hover {
     box-shadow: 0 0 3px 2px var(--text-hover-color);
     transition-duration: 0.3s;
 }
@@ -385,13 +470,13 @@ header .nav .nav__links .stick {
 }
 
 .contact__container .form__template .form-group.invalidate input {
-    border: 2px solid var(--warning-color);
+    border: 1px solid var(--warning-color);
 }
 
 
 .contact__container .form__template textarea:hover,
 .contact__container .form__template .form-group input:hover {
-    border: 2px solid var(--text-hover-color);
+    border: 1px solid var(--text-hover-color);
     transition-duration: 0.2s;
 }
 
@@ -399,7 +484,7 @@ header .nav .nav__links .stick {
 .contact__container .form__template .form-group input:focus-visible {
     outline-offset: none;
     outline: none;
-    border: 2px solid var(--text-color);
+    border: 1px solid var(--text-color);
     transition-duration: 0.2s;
 }
 
@@ -440,25 +525,32 @@ header .nav .nav__links .stick {
 
 
 /** Flat Menu */
-.flatMenu .flatButtonToTop {
+
+.flatMenu .flat-menu-items:last-child {
     opacity: 0.4;
     position: fixed;
     right: 40px;
     bottom: 40px;
     cursor: pointer;
+    transition-duration: 0.6s;
 }
 
-.flatMenu .flatButtonToTop:hover {
+.flatMenu.show {
     opacity: 1;
-    transition-duration: 0.3s;
+    transition-duration: 0.6s;
 }
 
-.flatMenu .flatButtonToTop img {
+.flatMenu.show .flat-menu-items {
+    opacity: 1;
+    font-size: 14px;
+}
+
+.flatMenu .flat-menu-items img {
     width: 30px;
     height: 30px;
 }
 
-.flatMenu .flatButtonToTop span {
+.flatMenu .flat-menu-items span {
     display: inline-block;
     position: absolute;
     top: 0;
@@ -469,14 +561,13 @@ header .nav .nav__links .stick {
     opacity: 0;
 }
 
-.flatMenu div:hover span {
-    opacity: 1;
-    font-size: 14px;
-    transition: all ease 0.3s;
+.flatMenu.show .flat-menu-items:hover span {
+    font-size: 16px;
+    opacity: 0.8;
     transition-duration: 0.3s;
 }
 
-.flatMenu div:not(div:last-child) {
+.flatMenu .flat-menu-items:not(.flat-menu-items:last-child) {
     display: block;
     border: solid 1px var(--text-color);
     border-radius: 50%;
@@ -488,47 +579,36 @@ header .nav .nav__links .stick {
     right: 40px;
     bottom: 40px;
     opacity: 0;
+    transition: bottom .4s, opacity .4s;
 }
 
-.flatMenu div:not(div:last-child).show:hover {
+.flatMenu .flat-menu-items:not(.flat-menu-items:last-child) {
     background-color: var(--background-color);
-    transition-duration: 0.3s;
 }
 
-.flatMenu div:nth-child(1).show {
+
+.flatMenu.show .flat-menu-items:nth-child(1) {
     background-color: #eea302;
     bottom: 150px;
-    transition-duration: 0.5s;
-    animation: showFlatMenu forwards 0.3s;
-    animation-delay: 0.6s;
+    opacity: 1;
+    transition: bottom .4s, opacity .4s;
 }
 
-.flatMenu div:nth-child(2).show {
+.flatMenu.show .flat-menu-items:nth-child(2) {
     background-color: #ff3b25;
     bottom: 115px;
-    transition-duration: 0.5s;
-    animation: showFlatMenu forwards 0.3s;
-    animation-delay: 0.3s;
+    opacity: 1;
+    transition: bottom .2s, opacity .2s;
 }
 
-.flatMenu div:nth-child(3).show {
+.flatMenu.show .flat-menu-items:nth-child(3) {
     background-color: #80d8da;
     bottom: 80px;
-    transition-duration: 0.5s;
-    animation: showFlatMenu forwards 0.3s;
-    animation-delay: 0.1s;
+    opacity: 1;
+    transition: bottom .1s, opacity .1s;
 }
 
 
-@keyframes showFlatMenu {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
 
 /** End Flat menu */
 
@@ -618,6 +698,12 @@ header .nav .nav__links .stick {
 @media only screen and (max-width: 739px) {
 
     /** --- Nav--- **/
+    header .nav {
+        display: inline-block;
+        width: 100%;
+        padding-top: 8px;
+    }
+
     header .nav .first--page {
         display: block;
         position: relative;
@@ -625,8 +711,8 @@ header .nav .nav__links .stick {
 
     header .nav #dropdownBtn {
         display: block;
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
         border: none;
         outline: none;
         padding: 0;
@@ -699,7 +785,7 @@ header .nav .nav__links .stick {
         }
     }
 
-    header .nav .nav__links.mobileNav .nav-item a::after {
+    header .nav .nav__links.mobileNav .nav-items a::after {
         display: block;
         content: "";
         border-top: solid 2px var(--text-color);
@@ -708,8 +794,8 @@ header .nav .nav__links .stick {
         transition: width ease 0.4s;
     }
 
-    header .nav .nav__links.mobileNav .nav-item.active a::after,
-    header .nav .nav__links.mobileNav .nav-item:hover a::after {
+    header .nav .nav__links.mobileNav .nav-items.active a::after,
+    header .nav .nav__links.mobileNav .nav-items:hover a::after {
         width: 10%;
         transition: width ease 0.4s;
     }
@@ -740,9 +826,13 @@ header .nav .nav__links .stick {
         font-size: 20px;
     }
 
-    .home__container .home--image img {
+    .home__container .home--image .images .image-slider {
         width: 320px;
         height: 320px;
+    }
+
+    .home__container .home--image .images .image-slider span {
+        font-size: 60px;
     }
 
     /** --- Resume --- **/
@@ -813,7 +903,7 @@ header .nav .nav__links .stick {
     }
 
     /** --- Flatmenu--- */
-    .flatMenu .flatButtonToTop {
+    .flatMenu .flat-menu-items {
         right: 30px;
         bottom: 40px;
     }
@@ -822,7 +912,7 @@ header .nav .nav__links .stick {
         display: none;
     }
 
-    .flatMenu .flatButtonToTop span {
+    .flatMenu .flat-menu-items span {
         display: none;
     }
 }
