@@ -7,12 +7,34 @@ dropdownNavBtn.onclick = function () {
     navLink.classList.toggle('mobileNav')
 }
 //*---Scroll handler---
-const sections = document.querySelectorAll('section')
-const navItems = document.querySelectorAll('.nav-items')
-var scrollToTopBtn = document.getElementById("toTopMenu")
 window.onscroll = function () {
+    const sections = document.querySelectorAll('section')
+    const navItems = document.querySelectorAll('.nav-items')
+    var scrollToTopBtn = document.getElementById("toTopMenu")
+    //--- show button go to top
     let opsetTopBody = window.scrollY
     opsetTopBody >= 400 ? scrollToTopBtn.style.display = "block" : scrollToTopBtn.style.display = "none"
+
+    //--- action NavLinks
+    const sectionPoint = []
+    const sectionArea = []
+    for (let i = 0; i < sections.length - 1; i++) {
+        const element = sections[i + 1];
+        sectionPoint.push(element.offsetTop - 52)
+        sectionArea.push(element.offsetTop - 52 + element.offsetHeight)
+        // -52px Navbar height
+    }
+    for (let i = 0; i <= navItems.length - 1; i++) {
+        const lastSection = sections[sections.length - 1].offsetTop - sections[sections.length - 1].offsetHeight - 52
+        if (opsetTopBody >= sectionPoint[i] && opsetTopBody <= sectionArea[i] && opsetTopBody < lastSection) {
+            navItems[i].classList.add('active')
+        } else if (opsetTopBody > lastSection) {
+            navItems[navItems.length - 1].classList.add('active')
+            navItems[navItems.length - 2].classList.remove('active')
+        } else {
+            navItems[i].classList.remove('active')
+        }
+    }
 }
 //*---end nav---
 
@@ -134,11 +156,10 @@ const showFlatMenu = () => {
 function hideFlatMenu() {
     delay = setTimeout(() => { flatMenu.classList.remove('show') }, 1000)
 }
-//*function scroll to top
+//---scroll to top
 function scrollToTop() {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
 }
-//*end scroll to top
 
 //*end Flat menu */
